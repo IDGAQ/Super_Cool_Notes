@@ -1,16 +1,16 @@
-// string to char
+//// string to char
 for(i...) charAt(i);
 
 
-//char to int
-//// because the value is read as ASCII code
-//// in ASCII, numbers starts at 48, and '0' is exactly 48!
+//// char to int
+// because the value is read as ASCII code
+// in ASCII, numbers starts at 48, and '0' is exactly 48!
 int a;
 char b ='5';
 a = b-'0';
 
 
-//use of ^
+//// use of ^
 (boolean)
 if( true ^ true ) return false;
 if (false ^ true) return true;
@@ -24,3 +24,19 @@ int b=4;
 a^=b;
 // b = 4 ^ 7, do the same
 b^=a;
+
+
+//// use of ? : 
+int a=0,b=1,max;
+// the two ways work the same
+if (a > b) {
+      max = a;
+    }
+    else {
+      max = b;
+    }
+
+//if a>b is true, max=b; else, max=a;
+max=    (a>b)   ?a    :b;
+    
+
