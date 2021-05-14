@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>mySecondHomework</title>
+		<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+			<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+			<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		
+		<style>
+			/* dropdown settings */
+			.dropbtn {
+				background-color: #fff0f5;
+				color: black;
+				padding: 16px;
+				font-size: 16px;
+				border: none;
+				cursor: pointer;
+			}
+
+			.dropdown {
+				position: relative;
+				display: inline-block;
+			}
+
+			.dropdown-content {
+				display: none;
+				position: relative;
+				background-color: #f9f9f9;
+				min-width: 160px;
+				box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+				z-index: 1;
+			}
+
+			.dropdown-content a {
+				color: black;
+				padding: 12px 16px;
+				text-decoration: none;
+				display: block;
+			}
+
+			.dropdown-content a:hover {
+				background-color: #fffbff
+			}
+
+			.dropdown:hover .dropdown-content {
+				display: block;
+			}
+
+			.dropdown:hover .dropbtn {
+				background-color: #ffdde9;
+			}
+
+			/* links settings */
+			ul {
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+				overflow: hidden;
+				background: lavenderblush;
+				text-align:center;
+			}
+
+			li {
+				float: right;
+			}
+
+			li a {
+				display: block;
+				padding: 8px;
+			}
+
+			/* pic */
+			.picdropdown:hover .picdropdown-content {
+				display: block;
+			}
+
+			.picdesc {
+				padding: 15px;
+				text-align: center;
+			}
+		</style>
+
+		<!-- hover -->
+		<script type="text/javascript" src="jquery-1.11.1.js"></script>
+		<script>
+			$(document).ready(function() {
+				$("ul").hover(function() {
+					$("ul").css("background-color", "#337ab7");
+				}, function() {
+					$("ul").css("background-color", "#fff0f5");
+				});
+			});
+		</script>
+
+		<!-- check if password includes at least 1 UpperCase and 1 non letter -->
+		<script>
+				$(document).ready(function() {
+					$(password).focusout(function() {
+						$(this).css("background-color", "#fff0f5");
+						var myValue = $(this).val();
+						let reg = /([A-Z]+)+(\w)+([0-9]+)/;
+						let reg2 = /([0-9]+)+(\w)+([A-Z]+)/;
+						if (reg.test(myValue) | reg2.test(myValue)&& myValue.length>=8) {
+							//turn red, show hint
+							$("hint2").html("Passed √");
+						} else {
+							$("hint2").html("Not Passed ×, at least 8 characters, 1 UpperCase and Number");
+						}
+					});
+				});
+			
+		</script>
+		
+		<!-- username check -->
+		<script>
+			$(document).ready(function() {
+				$(username).focusout(function() {
+					$(this).css("background-color", "#fff0f5");
+					var myValue = $(this).val();
+					let reg = /(\W)/;
+					if(myValue.length>=8 && !reg.test(myValue)){
+						$("hint1").html("Passed √");
+					}
+					else {
+						$("hint1").html("Not Passed ×, at least  8 Characters without Symbols");
+						return false;
+					}
+				});
+			});
+		</script>
+		<!-- submit button: if password == true , return true, else return false -->
+		<script>
+			$(document).ready(function() {
+				$(submit).click(function() {
+					<!-- if length>=8, else -->
+					var myValue = $("hint1").html();
+					var myValue2 = $("hint2").html();
+					if(myValue == "Passed √" && myValue2 == "Passed √"){
+						window.alert("Talking to Back-End");
+						return true;
+					}
+					else{
+						window.alert("Invalid Input!");
+						return false;
+					}
+				});
+			});
+		</script>
+
+		<!-- submit button: if password == true , return true, else return false -->
+		<script>
+			$(document).ready(function() {
+				$(register).click(function() {
+					<!-- if length>=8, else -->
+					var myValue = $("hint1").html();
+					var myValue2 = $("hint2").html();
+					if(myValue == "Passed √" && myValue2 == "Passed √"){
+						window.alert("Talking to Back-End");
+						return true;
+					}
+					else{
+						window.alert("Invalid Input!");
+						return false;
+					}
+				});
+			});
+		</script>
+	</head>
+
+
+
+
+	<body>
+		<!--标题 -->
+		<div style="height: 50px; background: lavenderblush;">
+			<a name="myTitle">
+				<center>
+					<h1> 科技大赛 </h1>
+				</center>
+			</a>
+		</div>
+
+		<!-- Links -->
+		<ul>
+			<div class="btn-group" data-toggle="buttons">
+				<label class="btn btn-primary">
+					<input type="radio" name="options" id="option1"> About
+				</label>
+				<label class="btn btn-primary">
+					<input type="radio" name="options" id="option2"> Contact
+				</label>
+				<label class="btn btn-primary">
+					<input type="radio" name="options" id="option3"> News
+				</label>
+				<label class="btn btn-primary">
+					<input type="radio" name="options" id="option34"> Home
+				</label>
+			</div>	
+		</ul>
+	
+
+		<!--Username + Password + Submit -->
+		<div>
+			<center>
+				<br />
+				<form action="test" method ="post">
+					<label for="username">username:</label><br>
+					<input type="text" id="username" name="username" placeholder="Enter Here"><br>
+					<hint1 style="color:grey;font-size:10px;">(At least 8 Characters without Symbols)</hint1>
+					<br>
+					<label for="password">password:</label><br>
+					<input type="password" id="password" name="password" required><br>
+					<hint2 style="color:grey;font-size:10px;">(At least 8 characters, 1 UpperCase and 1 number)</hint2>
+					<br>
+
+					<center>
+						<br>
+						<label for="major">What is Your Major:</label>
+						<br>
+						<select name="major" id="major">
+							<option value="ComputerScience">ComputerScience</option>
+							<option value="ComputerEngineering">ComputerEngineering</option>
+							<option value="Statistics">Statistics</option>
+							<option value="Others">Others</option>
+						</select>
+					</center>
+
+
+					<input type="submit" id="submit" name ="submit" value="Login">
+					<button type="reset" value="Reset">Reset</button>
+					<input type="submit" id="register" name ="submit" value="Register">
+				</form>
+			</center>
+		</div>
+
+
+		<!--Agreements -->
+		<div>
+			<br>
+			<center>
+				<hr style="height:2px;border-width:0;color:gray;background-color:pink"> <br>
+				<textarea rows="5" cols="30" readonly="readonly" disabled="disabled">科技大赛会员条款说明&#10;1.头发必须少&#10;2.不允许睡觉&#10;3.打工我骄傲
+					</textarea>
+				<hr style="height:2px;border-width:0;color:gray;background-color:pink"> <br>
+			</center>
+		</div>
+		
+		<center>
+		<div class="dropdown">
+			<button class="dropbtn">Sign-Up Entrance</button>
+			<div class="dropdown-content">
+				<a href="#">Robots</a>
+				<a href="#">Algorithms</a>
+				<a href="#">Others</a>
+			</div>
+
+			<div class="dropdown-content">
+				<img src="not_ok.jfif" alt="Future is Here" width="300" height="200">
+				<div class="desc">
+					<center>Future is Here</center>
+				</div>
+			</div>
+		</div>
+		</center>
+
+	</body>
+</html>
